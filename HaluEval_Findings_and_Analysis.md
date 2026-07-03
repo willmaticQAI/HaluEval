@@ -121,6 +121,18 @@ Pilot result: 0% ambiguous parses, all three models already showing distinct beh
 
 Note the extremes: **Llama on summarization predicted "Yes" on all 1,000 instances** (TN=FN=0) — a complete class collapse. **Llama on QA** is nearly as degenerate (only 6/1000 "No" predictions total). **Gemma** shows the opposite collapse pattern but less extreme (it does predict "No" the vast majority of the time across all three tasks).
 
+### 4.3 Visualizations
+
+**Figure 1 — Accuracy heatmap.** Color scale is fixed to 0.40–0.60 (rather than auto-scaled to this run's narrow spread) so shading reflects genuine distance from the 0.50 chance baseline, marked with a dashed line on the color bar.
+
+![Accuracy heatmap: 3 models x 3 tasks](figures/accuracy_heatmap.png)
+
+**Figure 2 — Precision vs. recall trade-off.** One point per model-task pair (9 total), color = model, shape = task. Dashed reference lines mark chance (0.50) on both axes. Point identity is carried by the legend (color × shape); exact values are in the §4.1 table.
+
+![Precision vs. recall scatter: 9 points, color=model, shape=task](figures/precision_recall_scatter.png)
+
+The scatter makes the degenerate-strategy finding visually immediate: Llama's three points cluster tightly on the right edge (recall 0.84–1.00) hugging the precision=chance line, Gemma's three points cluster on the left edge (recall 0.05–0.10), and Qwen is the only model with points clearly off both edges.
+
 ---
 
 ## 5. Key Findings
